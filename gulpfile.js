@@ -1,7 +1,8 @@
 // var notify = require("gulp-notify");
 var gulp = require('gulp');
 var sass = require('gulp-sass');
-// var gutil = require('gulp-util');
+var concat = require('gulp-concat');
+var gutil = require('gulp-util');
 var browserify = require('browserify');
 var reactify = require('reactify');
 var watchify = require('watchify');
@@ -12,8 +13,10 @@ gulp.task('browserify', function() {
 })
 
 gulp.task('sass', function() {
-  gulp.src('./assets/css/**/*.scss')
-    .pipe(sass().on('error', sass.logError))
+  gulp.src('./assets/css/main.scss')
+    .pipe(sass({style: 'expanded'})
+      .on('error', sass.logError))
+    .pipe(concat('main.css'))
     .pipe(gulp.dest('./assets/css/'))
 });
 
@@ -30,10 +33,12 @@ function browserifySetup() {
     packageCache: {},
     fullPaths: true
   });
-  b = watchify(b);
   b.transform(reactify);
+  b = watchify(b);
+  rebundle(b);
 
   b.on('update', function() {
+    gutil.log('updating dependencies');
     rebundle(b);
   });
 };
@@ -41,6 +46,7 @@ function browserifySetup() {
 function rebundle(b) {
   var stream = b.bundle()
   return stream
+    .on('error', gutil.log.bind(gutil, 'Browserify Error'))
     .pipe(source('bundle.js'))
     .pipe(gulp.dest('./assets/js/'))
 };
