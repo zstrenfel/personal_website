@@ -3,6 +3,45 @@ html, body {
   padding: 0;
   border: 0;
   font-size: 100%;
-  font: inherit;
+  font: $font-family;
   vertical-align: baseline;
+}
+
+h1, h2, h3, h4, h5{
+  font-family: $font-family;
+  color: $primary-font;
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  color: $secondary-font;
+  font-family: $font-family;
+}
+
+.container {
+  @include outer-container;
+  font-family: inherit;
+}
+
+.section {
+  @include span-columns(12);
+  padding: 10px;
+  font-family: inherit;
+}
+
+.full {
+  @include span-columns(12);
+}
+
+.half {
+  @include span-columns(6);
+}
+
+.one-third {
+  @include span-columns(4);
+}
+
+.two-third {
+  @include span-columns(8);
 }
