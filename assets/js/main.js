@@ -5,7 +5,7 @@ var HeaderSection = require('./components/headerSection');
 var WorkSection = require('./components/workSection');
 var ContactSection = require('./components/contactSection');
 var AboutSection = require('./components/aboutSection');
-var data = require('./galleryData');
+var data = require('./workData');
 
 
 var App = React.createClass({

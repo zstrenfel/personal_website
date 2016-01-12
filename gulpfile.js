@@ -9,17 +9,27 @@ var reactify = require('reactify');
 var watchify = require('watchify');
 var source = require('vinyl-source-stream');
 var plumber = require('gulp-plumber');
+var svgify = require('svgify');
+var svgToJsx = require ('gulp-svg-to-jsx');
 
 //file location paths
 var path = {
   js: ['./assets/js/main.js'],
-  css: ['./assets/css/main.scss']
+  css: ['./assets/css/main.scss'],
+  svg: ['./assets/imgs/rawSVGs/*'],
+  icons: ['./assets/imgs/icons']
 }
 
 //browserify to import dependencies
 gulp.task('browserify', function() {
   return browserifySetup();
 })
+
+gulp.task('svg', function() {
+  return gulp.src('./assets/imgs/rawSVGs/*')
+    .pipe(svgToJsx())
+    .pipe(gulp.dest('./assets/imgs/icons'))
+});
 
 //sass to compile css
 gulp.task('sass', function() {
@@ -38,7 +48,7 @@ gulp.task('sass', function() {
     .pipe(gulp.dest('./assets/css/'))
 });
 
-gulp.task('default', ['browserify'], function() {
+gulp.task('default', ['browserify', 'svg'], function() {
   gulp.watch('./assets/css/**/*.scss', ['sass']);
 });
 
@@ -47,7 +57,7 @@ gulp.task('default', ['browserify'], function() {
 //finds dependencies and updates on changes with watchify
 function browserifySetup() {
   var b = browserify( path.js, {
-    transform: [reactify],
+    transform: [reactify, svgify],
     cache: {},
     packageCache: {},
     fullPaths: true,

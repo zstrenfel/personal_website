@@ -7,6 +7,10 @@ html, body {
   vertical-align: baseline;
 }
 
+body {
+  // background-color: #D7D7D7;
+}
+
 h1, h2, h3, h4, h5{
   font-family: $font-family;
   color: $primary-font;
@@ -20,28 +24,40 @@ p {
 }
 
 .container {
-  @include outer-container;
+  @include outer-container(2000px);
   font-family: inherit;
+  background-color: #fff;
 }
 
 .section {
   @include span-columns(12);
   padding: 10px;
   font-family: inherit;
+  height: 100vh;
 }
 
-.full {
-  @include span-columns(12);
-}
-
-.half {
+.half-column {
   @include span-columns(6);
 }
 
+
+//for flex box
+.single {
+  flex-grow: 1;
+  width: 100%;
+}
+
+.half {
+  width: 50%;
+  flex-grow: 1;
+}
+
 .one-third {
-  @include span-columns(4);
+  width: 33%;
+  flex-grow: 1;
 }
 
 .two-third {
-  @include span-columns(8);
+  width: 66%;
+  flex-grow: 3;
 }
