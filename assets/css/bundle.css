@@ -9,8 +9,12 @@ html, body {
   padding: 0;
   border: 0;
   font-size: 100%;
-  font: Helvetica, sans-serif;
+  font-family: Helvetica, sans-serif;
+  color: #626262;
   vertical-align: baseline; }
+
+body {
+  background-color: #D7D7D7; }
 
 h1, h2, h3, h4, h5 {
   font-family: Helvetica, sans-serif;
@@ -23,7 +27,7 @@ p {
   font-family: Helvetica, sans-serif; }
 
 .container {
-  max-width: 2000px;
+  max-width: 68em;
   margin-left: auto;
   margin-right: auto;
   font-family: inherit;
@@ -86,6 +90,15 @@ p {
 
 .header {
   height: 400px; }
+  .header .text, .header .image {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%); }
+  .header .image {
+    margin-right: 0;
+    text-align: center; }
+  .header h1 {
+    font-size: 3em; }
 
 .work {
   height: 700px; }
@@ -106,6 +119,7 @@ p {
     margin-right: 0; }
 
 .gallery-elem {
+  padding: .2em;
   height: calc(100% / 3);
   opacity: .5;
   cursor: pointer;

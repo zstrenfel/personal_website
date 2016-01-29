@@ -27,9 +27,10 @@ var GalleryBox = React.createClass({
     });
   },
   loadGallery: function(posts) {
+    var self = this;
     var GalleryNodes = posts.map(function(post) {
       var hover;
-      if (this.state.hover === null || this.state.hover === post.id) {
+      if (self.state.hover === post.id) {
           hover = true;
         } else {
           hover = false;
@@ -40,9 +41,9 @@ var GalleryBox = React.createClass({
           elemID={post.id}
           title={post.title}
           tags={post.tags}
-          mouseOver={this.mouseOver}
-          mouseOut={this.mouseOut}
-          onClick={this.handleClick}
+          mouseOver={self.mouseOver}
+          mouseOut={self.mouseOut}
+          onClick={self.handleClick}
           hover={hover}
           className={post.className}
         />
@@ -60,11 +61,8 @@ var GalleryBox = React.createClass({
   render: function() {
    var self = this;
    var posts = this.props.data.posts;
-   var GalleryContent = this.state.selected !== null ? loadSelected(this.state.selected, posts) : loadGallery(posts, self).bind(this);
-
-
-
-    return (
+   var GalleryContent = this.state.selected !== null ? this.loadSelected(this.state.selected, posts) : this.loadGallery(posts);
+   return (
        <div className="gallery-container">
         {GalleryContent}
       </div>

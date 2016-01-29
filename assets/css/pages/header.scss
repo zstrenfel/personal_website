@@ -1,4 +1,22 @@
 .header {
   @extend .section;
   height: 400px;
+
+  .text, .image {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .image {
+    @include omega();
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 3em;
+  }
+
+
+
 }
