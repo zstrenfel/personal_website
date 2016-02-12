@@ -51,11 +51,16 @@ var GalleryBox = React.createClass({
     });
     return GalleryNodes;
   },
-  loadSelected: function(id, posts) {
+  loadSelected: function(post, posts) {
     var Selected;
-    for (var i; i < posts.length; i++) {
-      if (posts[i].id === id) {
+    for (var i = 0; i < posts.length; i++) {
+      console.log(posts[i]);
+      if (posts[i].id === post) {
+         Selected = <SelectedElem />
       }
+    }
+    if (Selected == null) {
+      this.loadGallery(posts);
     }
   },
   render: function() {
