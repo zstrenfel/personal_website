@@ -14,7 +14,7 @@ var svgToJsx = require ('gulp-svg-to-jsx');
 
 //file location paths
 var path = {
-  js: ['./assets/js/main.js'],
+  js: ['./assets/js/index.js'],
   css: ['./assets/css/main.scss'],
   svg: ['./assets/imgs/rawSVGs/*'],
   icons: ['./assets/imgs/icons']
@@ -25,11 +25,11 @@ gulp.task('browserify', function() {
   return browserifySetup();
 })
 
-gulp.task('svg', function() {
-  return gulp.src('./assets/imgs/rawSVGs/*')
-    .pipe(svgToJsx())
-    .pipe(gulp.dest('./assets/imgs/icons'))
-});
+// gulp.task('svg', function() {
+//   return gulp.src('./assets/imgs/rawSVGs/*')
+//     .pipe(svgToJsx())
+//     .pipe(gulp.dest('./assets/imgs/icons'))
+// });
 
 //sass to compile css
 gulp.task('sass', function() {
@@ -48,7 +48,7 @@ gulp.task('sass', function() {
     .pipe(gulp.dest('./assets/css/'))
 });
 
-gulp.task('default', ['browserify', 'svg'], function() {
+gulp.task('default', ['browserify'], function() {
   gulp.watch('./assets/css/**/*.scss', ['sass']);
 });
 
@@ -57,12 +57,12 @@ gulp.task('default', ['browserify', 'svg'], function() {
 //finds dependencies and updates on changes with watchify
 function browserifySetup() {
   var b = browserify( path.js, {
-    transform: [reactify, svgify],
     cache: {},
     packageCache: {},
     fullPaths: true,
     debug: true
   });
+  b.transform("babelify", {presets: ["es2015", "react"]});
   b = watchify(b);
   rebundle(b);
 

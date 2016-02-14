@@ -1,4 +1,4 @@
-.header {
+.splash {
   @extend .section;
   height: 400px;
 
@@ -17,6 +17,8 @@
     font-size: 3em;
   }
 
-
-
+  h2 {
+    color: $secondary-font;
+    margin-bottom: 5px;
+  }
 }

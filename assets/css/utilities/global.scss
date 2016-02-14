@@ -23,12 +23,15 @@ h1, h2, h3, h4, h5{
 p {
   color: $secondary-font;
   font-family: $font-family;
+  margin: 0;
 }
 
 .container {
   @include outer-container();
-  font-family: inherit;
   background-color: #fff;
+  font-family: inherit;
+  overflow: auto;
+
 }
 
 .section {

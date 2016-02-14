@@ -24,20 +24,22 @@ h1, h2, h3, h4, h5 {
 
 p {
   color: #626262;
-  font-family: Helvetica, sans-serif; }
+  font-family: Helvetica, sans-serif;
+  margin: 0; }
 
 .container {
   max-width: 68em;
   margin-left: auto;
   margin-right: auto;
+  background-color: #fff;
   font-family: inherit;
-  background-color: #fff; }
+  overflow: auto; }
   .container::after {
     clear: both;
     content: "";
     display: table; }
 
-.section, .about, .contact, .header, .work {
+.section, .about, .contact, .splash, .work {
   float: left;
   display: block;
   margin-right: 2.35765%;
@@ -45,7 +47,7 @@ p {
   padding: 10px;
   font-family: inherit;
   height: 100vh; }
-  .section:last-child, .about:last-child, .contact:last-child, .header:last-child, .work:last-child {
+  .section:last-child, .about:last-child, .contact:last-child, .splash:last-child, .work:last-child {
     margin-right: 0; }
 
 .half-column {
@@ -88,17 +90,20 @@ p {
   border-right: 2px solid #D8D8D8;
   background-color: #EFEFEF; }
 
-.header {
+.splash {
   height: 400px; }
-  .header .text, .header .image {
+  .splash .text, .splash .image {
     position: relative;
     top: 50%;
     transform: translateY(-50%); }
-  .header .image {
+  .splash .image {
     margin-right: 0;
     text-align: center; }
-  .header h1 {
+  .splash h1 {
     font-size: 3em; }
+  .splash h2 {
+    color: #626262;
+    margin-bottom: 5px; }
 
 .work {
   height: 700px; }
