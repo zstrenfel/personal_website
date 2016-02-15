@@ -1,16 +1,15 @@
 // var notify = require("gulp-notify");
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var sassGlob = require('gulp-sass-glob');
-var concat = require('gulp-concat');
-var gutil = require('gulp-util');
-var browserify = require('browserify');
-var reactify = require('reactify');
-var watchify = require('watchify');
-var source = require('vinyl-source-stream');
-var plumber = require('gulp-plumber');
-var svgify = require('svgify');
-var svgToJsx = require ('gulp-svg-to-jsx');
+var gulp = require('gulp'),
+    nodemon = require('gulp-nodemon'),
+    sass = require('gulp-sass'),
+    sassGlob = require('gulp-sass-glob'),
+    concat = require('gulp-concat'),
+    gutil = require('gulp-util'),
+    browserify = require('browserify'),
+    watchify = require('watchify'),
+    source = require('vinyl-source-stream'),
+    plumber = require('gulp-plumber'),
+    browserSync = require('browser-sync');
 
 //file location paths
 var path = {
@@ -25,11 +24,31 @@ gulp.task('browserify', function() {
   return browserifySetup();
 })
 
-// gulp.task('svg', function() {
-//   return gulp.src('./assets/imgs/rawSVGs/*')
-//     .pipe(svgToJsx())
-//     .pipe(gulp.dest('./assets/imgs/icons'))
-// });
+//browser-sync
+gulp.task('browser-sync', ['nodemon'], function() {
+  browserSync.init(null, {
+    proxy: "http://localhost:8000",
+    files: ["assets/js/bundle.js", "assets/css/bundle.css", "assets/index.html"],
+    browser: "firefox",
+    port: 7000,
+    online: true
+  });
+})
+
+//gulp-webserver to make pages accessible on localhost
+gulp.task('nodemon', function(cb) {
+  var started = false;
+  return nodemon({
+    script:'./server.js',
+    ignore: ['assets/js/components/*', 'assets/css/**/*']
+  })
+    .on('start', function() {
+      if (!started) {
+        cb();
+        started = true;
+      }
+    });
+});
 
 //sass to compile css
 gulp.task('sass', function() {
@@ -48,7 +67,7 @@ gulp.task('sass', function() {
     .pipe(gulp.dest('./assets/css/'))
 });
 
-gulp.task('default', ['browserify'], function() {
+gulp.task('default', ['browser-sync', 'browserify'], function() {
   gulp.watch('./assets/css/**/*.scss', ['sass']);
 });
 
@@ -57,15 +76,14 @@ gulp.task('default', ['browserify'], function() {
 //finds dependencies and updates on changes with watchify
 function browserifySetup() {
   var b = browserify( path.js, {
+    transform: [['babelify', {'presets': ["es2015", "react"]}]],
     cache: {},
     packageCache: {},
     fullPaths: true,
     debug: true
   });
-  b.transform("babelify", {presets: ["es2015", "react"]});
   b = watchify(b);
   rebundle(b);
-
   b.on('update', function() {
     gutil.log('updating dependencies');
     rebundle(b);

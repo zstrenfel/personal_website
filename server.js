@@ -24,4 +24,5 @@ app.get('*', function(req, res) {
 
 // Launch app -------------------
 app.listen(port);
+console.log("*** server running");
 exports = module.exports = app;
