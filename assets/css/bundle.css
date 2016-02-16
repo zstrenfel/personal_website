@@ -9,22 +9,22 @@ html, body {
   padding: 0;
   border: 0;
   font-size: 100%;
-  font-family: Helvetica, sans-serif;
-  color: #626262;
+  font-family: Open-sans, Helvetica, sans-serif;
+  color: #454545;
   vertical-align: baseline; }
 
 body {
   background-color: #D7D7D7; }
 
 h1, h2, h3, h4, h5 {
-  font-family: Helvetica, sans-serif;
+  font-family: Open-sans, Helvetica, sans-serif;
   color: #202020;
   margin: 0;
   padding: 0; }
 
 p {
-  color: #626262;
-  font-family: Helvetica, sans-serif;
+  color: #454545;
+  font-family: Open-sans, Helvetica, sans-serif;
   margin: 0; }
 
 .container {
@@ -90,21 +90,53 @@ p {
   border-right: 2px solid #D8D8D8;
   background-color: #EFEFEF; }
 
-.splash .text, .splash .image {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%); }
+.splash {
+  overflow: hidden;
+  padding: 0;
+  position: relative; }
+  .splash .text, .splash .image {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%); }
+  .splash .image-container {
+    margin-right: 0;
+    text-align: center; }
+    .splash .image-container img {
+      opacity: 0.2; }
+  .splash h1 {
+    font-size: 4em;
+    font-weight: 300;
+    color: #D35400; }
+  .splash h2 {
+    color: #454545;
+    margin-bottom: 5px;
+    font-weight: 400; }
+  .splash p {
+    font-size: 1.2em;
+    margin-bottom: 10px; }
 
-.splash .image {
-  margin-right: 0;
-  text-align: center; }
+.ticker {
+  background-color: #222222;
+  bottom: 0;
+  color: #D9D9D9;
+  font-family: "Share Tech Mono";
+  height: 30px;
+  line-height: 30px;
+  position: absolute;
+  width: inherit; }
+  .ticker .ticker-text {
+    position: absolute;
+    white-space: nowrap;
+    animation-duration: 40s;
+    animation-name: ticker;
+    animation-timing-function: linear;
+    left: 100%; }
 
-.splash h1 {
-  font-size: 3em; }
-
-.splash h2 {
-  color: #626262;
-  margin-bottom: 5px; }
+@keyframes ticker {
+  from {
+    left: 100%; }
+  to {
+    left: -250%; } }
 
 .work {
   height: 700px; }

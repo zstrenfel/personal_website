@@ -1,6 +1,7 @@
 // headerSection.js
 
 import React from 'react';
+import Ticker from './ticker'
 import { Link } from 'react-router'
 
 
@@ -8,8 +9,8 @@ export default React.createClass({
   render() {
    return (
       <div className="splash">
-        <div className="half-column image">
-          <img src={"https://api.fnkr.net/testimg/350x200/00CED1/FFF/?text=img+placeholder"} />
+        <div className="half-column image-container">
+          <img src={'../../imgs/splashMe.png'} />
         </div>
         <div className="half-column text">
           <h2>Hello, I'm </h2>
@@ -20,6 +21,7 @@ export default React.createClass({
             </p>
             <aside> Feel free to view my work <Link to="/work">here</Link>.</aside>
         </div>
+        <Ticker/>
       </div>
     );
   }
