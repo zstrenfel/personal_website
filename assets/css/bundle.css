@@ -90,20 +90,21 @@ p {
   border-right: 2px solid #D8D8D8;
   background-color: #EFEFEF; }
 
-.splash {
-  height: 400px; }
-  .splash .text, .splash .image {
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%); }
-  .splash .image {
-    margin-right: 0;
-    text-align: center; }
-  .splash h1 {
-    font-size: 3em; }
-  .splash h2 {
-    color: #626262;
-    margin-bottom: 5px; }
+.splash .text, .splash .image {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%); }
+
+.splash .image {
+  margin-right: 0;
+  text-align: center; }
+
+.splash h1 {
+  font-size: 3em; }
+
+.splash h2 {
+  color: #626262;
+  margin-bottom: 5px; }
 
 .work {
   height: 700px; }
