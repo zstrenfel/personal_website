@@ -15,8 +15,6 @@ var gulp = require('gulp'),
 var path = {
   js: ['./assets/js/index.js'],
   css: ['./assets/css/main.scss'],
-  svg: ['./assets/imgs/rawSVGs/*'],
-  icons: ['./assets/imgs/icons']
 }
 
 //browserify to import dependencies

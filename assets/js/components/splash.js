@@ -12,7 +12,7 @@ export default React.createClass({
         <div className="half-column image-container">
           <img src={'../../imgs/splashMe.png'} />
         </div>
-        <div className="half-column text">
+        <div className="half-column text rise">
           <h2>Hello, I'm </h2>
            <h1>Zach Strenfel</h1>
            <p>
