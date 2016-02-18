@@ -1,11 +1,11 @@
-var React = require('react');
+import React from 'react'
 
-var SelectedElem = React.createClass({
-  render: function() {
+export default React.createClass({
+  render() {
     return (
-      <div className='selected-work' >
+      <div className='selected-work'>
         this is where the selected work will go
-      </ div >
+      </div>
     )
   }
 })

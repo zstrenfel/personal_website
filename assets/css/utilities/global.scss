@@ -32,7 +32,11 @@ p {
   background-color: #fff;
   font-family: inherit;
   overflow: auto;
+}
 
+.content {
+  height: 100vh;
+  width: 100%;
 }
 
 .section {
@@ -40,6 +44,7 @@ p {
   padding: 10px;
   font-family: inherit;
   height: 100vh;
+  overflow: hidden;
 }
 
 .half-column {
@@ -66,4 +71,53 @@ p {
 .two-third {
   width: 66%;
   flex-grow: 3;
+}
+
+.right {
+  float: right;
+}
+
+.left {
+  float: left;
+}
+
+a {
+  text-decoration: none;
+  color: $disabled-text;
+
+  &:hover {
+    color: darken($accent-orange, 10%);
+    transition: color 300ms ease-in;
+  }
+}
+
+.main-nav {
+    overflow: hidden;
+    background-color: $accent-grey;
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      float: right;
+    }
+
+    li a {
+      display: block;
+      color: $secondary-font;
+      text-align: center;
+      padding: 10px 16px;
+      text-decoration: none;
+
+      &:hover {
+      }
+    }
+}
+
+.menu-active {
+  background-color: #999999;
+  color: #000;
 }

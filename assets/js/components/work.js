@@ -14,16 +14,11 @@ export default React.createClass({
       <div className="work">
         <header>
           <h2> Work </h2>
-          <nav className="sub-nav">
-            <ul>
-              <li><IndexLink to="/">Home</IndexLink></li>
-            </ul>
-          </nav>
         </header>
-          <nav className="sub-nav">
+          <nav className="sub-nav left">
             <ul>
-              <li><Link to="/work/design">Design</Link></li>
-              <li><Link to="/work/developement">Development</Link></li>
+              <li><Link to="/work/design" activeClassName="gallery-active">Design</Link></li>
+              <li><Link to="/work/developement" activeClassName="gallery-active">Development</Link></li>
             </ul>
           </nav>
         {children}

@@ -1,10 +1,13 @@
 //galleryBox
 
-var React = require('react');
-var GalleryElem = require('./galleryElem');
-var SelectedElem = require('./SelectedElem');
+import React from 'react'
+import GalleryElem from './galleryElem'
+import SelectedElem from './selectedElem'
 
 var GalleryBox = React.createClass({
+  componentWillUpdate: function() {
+    console.log("componentWillUpdate");
+  },
   getInitialState: function() {
     return {
       hover: null,
@@ -23,7 +26,7 @@ var GalleryBox = React.createClass({
   },
   handleClick: function(id) {
     this.setState({ selected: id }, function() {
-      console.log(this.state.selected);
+      console.log("selecter " + this.state.selected);
     });
   },
   loadGallery: function(posts) {
@@ -54,14 +57,15 @@ var GalleryBox = React.createClass({
   loadSelected: function(post, posts) {
     var Selected;
     for (var i = 0; i < posts.length; i++) {
-      console.log(posts[i]);
       if (posts[i].id === post) {
-         Selected = <SelectedElem />
+         Selected = <SelectedElem key={post}/>
       }
     }
     if (Selected == null) {
+      console.log('selected is null');
       this.loadGallery(posts);
     }
+    return Selected;
   },
   render: function() {
    var self = this;

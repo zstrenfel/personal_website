@@ -18,8 +18,15 @@ export default React.createClass({
            <p>
               Currently a senior @ UC Berkeley studying Media Studies,
               but with a passion for <b> Front-End Web Developement</b>, <b>Design</b>, and <b>UI/UX</b>.
-            </p>
-            <aside> Feel free to view my work <Link to="/work">here</Link>.</aside>
+          </p>
+          <div className="contact">
+            <ul>
+              <li><img src={'../../imgs/icons/linkedin-with-circle.svg'} /></li>
+              <li><img src={'../../imgs/icons/github-with-circle.svg'} /></li>
+              <li><img src={'../../imgs/icons/twitter-with-circle.svg'} /></li>
+              <li><img src={'../../imgs/icons/closed-envelope-circle.svg'} /></li>
+            </ul>
+          </div>
         </div>
         <Ticker/>
       </div>

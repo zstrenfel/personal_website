@@ -1,9 +1,0 @@
-.about {
-  @extend .section;
-
-  p {
-    @include span-columns(10);
-    @include shift(1);
-  }
-}
-
