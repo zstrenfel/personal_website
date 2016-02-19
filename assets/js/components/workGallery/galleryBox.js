@@ -4,40 +4,51 @@ import React from 'react'
 import GalleryElem from './galleryElem'
 import SelectedElem from './selectedElem'
 
-var GalleryBox = React.createClass({
-  componentWillUpdate: function() {
-    console.log("componentWillUpdate");
+export default React.createClass({
+  contextTypes: {
+    router: React.PropTypes.object
   },
-  getInitialState: function() {
+  getInitialState() {
     return {
       hover: null,
-      selected: null
+      selected: null,
+      path: null
     };
   },
-  mouseOver: function(id) {
+  mouseOver(id) {
     this.setState({
       hover: id
     });
   },
-  mouseOut: function() {
+  mouseOut() {
     this.setState({
       hover: null
     })
   },
-  handleClick: function(id) {
-    this.setState({ selected: id }, function() {
-      console.log("selecter " + this.state.selected);
-    });
+  handleClick(id) {
+    this.setState({ selected: id });
+    React.Children.map(this.props.children, (child, i) => {
+      console.log('here we go');
+      if (child.elemId === id) {
+        console.log(child);
+      }
+    })
+    return null;
   },
-  loadGallery: function(posts) {
+  loadGallery(posts) {
     var self = this;
     var GalleryNodes = posts.map(function(post) {
       var hover;
-      if (self.state.hover === post.id) {
-          hover = true;
-        } else {
-          hover = false;
-      };
+      if (self.state.hover === null) {
+        hover = true;
+      } else {
+          if (self.state.hover === post.id) {
+            hover = true;
+          } else {
+            hover = false;
+        }
+      }
+
       return (
         <GalleryElem
           key={post.id}
@@ -49,34 +60,29 @@ var GalleryBox = React.createClass({
           onClick={self.handleClick}
           hover={hover}
           className={post.className}
+          link={post.link}
         />
       );
     });
     return GalleryNodes;
   },
-  loadSelected: function(post, posts) {
-    var Selected;
+  loadSelected(post, posts) {
+    var path;
     for (var i = 0; i < posts.length; i++) {
       if (posts[i].id === post) {
-         Selected = <SelectedElem key={post}/>
+         path = posts[i].link;
+         this.context.router.push(path);
       }
     }
-    if (Selected == null) {
-      console.log('selected is null');
-      this.loadGallery(posts);
-    }
-    return Selected;
   },
-  render: function() {
+  render() {
    var self = this;
    var posts = this.props.data.posts;
-   var GalleryContent = this.state.selected !== null ? this.loadSelected(this.state.selected, posts) : this.loadGallery(posts);
+   var Children = this.state.selected !== null ? undefined : this.loadGallery(posts);
    return (
        <div className="gallery-container">
-        {GalleryContent}
-      </div>
+        {Children}
+       </div>
     );
   }
 });
-
-module.exports = GalleryBox;

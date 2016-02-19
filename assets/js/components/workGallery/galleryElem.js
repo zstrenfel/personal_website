@@ -21,6 +21,7 @@ var GalleryElem = React.createClass({
       });
 
     return(
+
       <div className={elemClass} onMouseOver={this.hoverOn} onMouseOut={this.hoverOff} onClick={this.handleClick}>
         <div className="inner">
           <div className="title">
