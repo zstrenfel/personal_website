@@ -17,9 +17,9 @@ render(
       <Route path="/work" component={Work}>
         <IndexRoute component={Development}/>
         <Route path="/work/development" component={Development}/>
-        <Route path="/work/design" component={Design}>
-          <Route path="/work/design/example" component={Example}/>
-        </Route>
+        <Route path="/work/development/example" component={Example}/>
+        <Route path="/work/design" component={Design}/>
+        <Route path="/work/design/example" component={Example}/>
       </Route>
     </Route>
   </Router>,

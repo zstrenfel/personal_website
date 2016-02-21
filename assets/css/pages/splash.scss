@@ -78,21 +78,22 @@
   width: inherit;
 
   .ticker-text {
-    position: absolute;
-    white-space: nowrap;
-    animation-duration: 40s;
-    animation-name: ticker;
-    animation-timing-function: linear;
-    animation-delay: 3s;
-    left: 100%;
+    display: none;
+  //   position: absolute;
+  //   white-space: nowrap;
+  //   animation-duration: 40s;
+  //   animation-name: ticker;
+  //   animation-timing-function: linear;
+  //   animation-delay: 3s;
+  //   left: 100%;
   }
 
-  @keyframes ticker {
-    from {
-      left: 100%;
-    }
-    to {
-      left: -250%;
-    }
-  }
+  // @keyframes ticker {
+  //   from {
+  //     left: 100%;
+  //   }
+  //   to {
+  //     left: -250%;
+  //   }
+  // }
 }

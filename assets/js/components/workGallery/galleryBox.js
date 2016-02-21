@@ -11,8 +11,7 @@ export default React.createClass({
   getInitialState() {
     return {
       hover: null,
-      selected: null,
-      path: null
+      selected: null
     };
   },
   mouseOver(id) {
@@ -26,14 +25,14 @@ export default React.createClass({
     })
   },
   handleClick(id) {
+    var path;
     this.setState({ selected: id });
-    React.Children.map(this.props.children, (child, i) => {
-      console.log('here we go');
-      if (child.elemId === id) {
-        console.log(child);
+    this.props.data.posts.map((post) => {
+      if (post.id === id) {
+        path = post.path;
       }
     })
-    return null;
+    this.context.router.push(path)
   },
   loadGallery(posts) {
     var self = this;
@@ -48,7 +47,6 @@ export default React.createClass({
             hover = false;
         }
       }
-
       return (
         <GalleryElem
           key={post.id}
@@ -60,25 +58,15 @@ export default React.createClass({
           onClick={self.handleClick}
           hover={hover}
           className={post.className}
-          link={post.link}
         />
       );
     });
     return GalleryNodes;
   },
-  loadSelected(post, posts) {
-    var path;
-    for (var i = 0; i < posts.length; i++) {
-      if (posts[i].id === post) {
-         path = posts[i].link;
-         this.context.router.push(path);
-      }
-    }
-  },
   render() {
    var self = this;
    var posts = this.props.data.posts;
-   var Children = this.state.selected !== null ? undefined : this.loadGallery(posts);
+   var Children = this.loadGallery(posts);
    return (
        <div className="gallery-container">
         {Children}

@@ -8,13 +8,10 @@ export default React.createClass({
   render() {
     return (
       <div className="work">
-        <header>
-          <h2> Work </h2>
-        </header>
           <nav className="sub-nav left">
             <ul>
-              <li><Link to='/work/development'>Development</Link></li>
-              <li><Link to='/work/design'>Design</Link></li>
+              <li><Link to='/work/development' activeClassName='gallery-active'>Development</Link></li>
+              <li><Link to='/work/design' activeClassName='gallery-active'>Design</Link></li>
             </ul>
           </nav>
         {this.props.children}

@@ -1,19 +1,20 @@
 //galleryElem.js
 
-var React = require('react');
-var classNames = require('classnames');
+import React from 'react'
+import classNames from'classnames'
+import {Link} from 'react-router'
 
-var GalleryElem = React.createClass({
-  hoverOn: function() {
+export default React.createClass({
+  hoverOn() {
     this.props.mouseOver(this.props.elemID);
   },
-  hoverOff: function() {
+  hoverOff() {
     this.props.mouseOut();
   },
-  handleClick: function() {
+  handleClick() {
     this.props.onClick(this.props.elemID);
   },
-  render: function() {
+  render() {
     //set classname
     var elemClass = classNames("gallery-elem", this.props.className,
       {
@@ -21,7 +22,6 @@ var GalleryElem = React.createClass({
       });
 
     return(
-
       <div className={elemClass} onMouseOver={this.hoverOn} onMouseOut={this.hoverOff} onClick={this.handleClick}>
         <div className="inner">
           <div className="title">
@@ -33,5 +33,3 @@ var GalleryElem = React.createClass({
     );
   }
 });
-
-module.exports = GalleryElem;

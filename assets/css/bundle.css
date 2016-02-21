@@ -51,7 +51,7 @@ p {
   width: 100%;
   padding: 10px;
   font-family: inherit;
-  height: 100vh;
+  height: calc(100vh - 37px);
   overflow: hidden; }
   .section:last-child, .splash:last-child, .work:last-child {
     margin-right: 0; }
@@ -99,9 +99,11 @@ a {
   .main-nav ul {
     list-style-type: none;
     padding: 0;
-    margin: 0; }
+    margin: 0;
+    text-align: center; }
   .main-nav li {
-    float: right; }
+    display: inline-block;
+    width: 100px; }
   .main-nav li a {
     display: block;
     color: #454545;
@@ -112,6 +114,11 @@ a {
 .menu-active {
   background-color: #999999;
   color: #000; }
+
+footer.contact {
+  width: 100%;
+  height: 150px;
+  background-color: #FCFCFC; }
 
 @keyframes rise {
   from {
@@ -164,7 +171,7 @@ a {
     font-size: 1.2em;
     margin-bottom: 10px; }
 
-.contact {
+.contact, footer.contact {
   float: left;
   display: block;
   margin-right: 2.35765%;
@@ -200,51 +207,44 @@ a {
   position: absolute;
   width: inherit; }
   .ticker .ticker-text {
-    position: absolute;
-    white-space: nowrap;
-    animation-duration: 40s;
-    animation-name: ticker;
-    animation-timing-function: linear;
-    animation-delay: 3s;
-    left: 100%; }
+    display: none; }
 
-@keyframes ticker {
-  from {
-    left: 100%; }
-  to {
-    left: -250%; } }
+.work-element {
+  width: 100%;
+  height: 100%; }
 
 .work {
-  height: 700px; }
-  .work h2 {
-    margin-bottom: 10px;
-    color: #D35400;
-    font-size: 2em;
-    display: inline; }
-  .work header {
-    padding: 15px 10px; }
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 100%;
+  height: auto; }
+  .work:last-child {
+    margin-right: 0; }
   .work .home-link {
     margin-top: 10px; }
-  .work .sub-nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0; }
-  .work .sub-nav li {
-    float: left; }
-  .work .sub-nav li a {
-    display: block;
-    margin: 5px 10px;
-    padding-bottom: 5px;
-    text-decoration: none;
-    line-height: 10px;
-    font-size: .9em; }
-    .work .sub-nav li a:hover {
-      font-size: .95em;
-      transition: font-size 400ms ease-in; }
+  .work .sub-nav {
+    margin-top: 40px; }
+    .work .sub-nav ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0; }
+    .work .sub-nav li {
+      float: left; }
+    .work .sub-nav li a {
+      display: block;
+      margin: 5px 10px;
+      padding-bottom: 5px;
+      text-decoration: none;
+      line-height: 10px;
+      font-size: .9em; }
+      .work .sub-nav li a:hover {
+        font-size: .95em;
+        transition: font-size 400ms ease-in; }
 
 .gallery-active {
   color: #454545;
-  font-size: 1.4em;
+  font-size: 3em;
   font-weight: 600; }
 
 .gallery-container {
@@ -261,8 +261,6 @@ a {
     margin-right: 0; }
 
 .gallery-elem {
-  padding: .2em;
-  height: calc(100% / 3);
   opacity: .5;
   cursor: pointer;
   -webkit-transition: all .5s ease;
@@ -281,3 +279,18 @@ a {
   .gallery-elem.emphasis {
     opacity: 1;
     padding: 0; }
+
+footer.contact {
+  width: 100%;
+  height: 150px;
+  background-color: #FCFCFC; }
+  footer.contact ul {
+    display: inline-block;
+    margin: 0 auto;
+    padding: 50px 0 0; }
+  footer.contact li {
+    display: inline-block;
+    float: none; }
+  footer.contact li img {
+    width: 35px;
+    height: auto; }
